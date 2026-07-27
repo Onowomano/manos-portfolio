@@ -1,0 +1,292 @@
+@import "./tokens.css";
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/InterVariable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Colors */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-on-primary: var(--text-on-primary);
+
+  --color-link-default: var(--link-default);
+  --color-link-hover: var(--link-hover);
+
+  --color-icon-primary: var(--icon-primary);
+  --color-icon-secondary: var(--icon-secondary);
+  --color-icon-tertiary: var(--icon-tertiary);
+  --color-icon-on-primary: var(--icon-on-primary);
+  --color-icon-accent-green: var(--icon-accent-green);
+  --color-icon-accent-red: var(--icon-accent-red);
+  --color-icon-accent-blue: var(--icon-accent-blue);
+  --color-icon-accent-violet: var(--icon-accent-violet);
+  --color-icon-accent-yellow: var(--icon-accent-yellow);
+  --color-icon-accent-pink: var(--icon-accent-pink);
+  --color-icon-accent-orange: var(--icon-accent-orange);
+
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-white: var(--bg-white);
+  --color-bg-accent-violet: var(--bg-accent-violet);
+  --color-bg-accent-yellow: var(--bg-accent-yellow);
+  --color-bg-accent-red-default: var(--bg-accent-red-default);
+  --color-bg-accent-red-light: var(--bg-accent-red-light);
+  --color-bg-accent-blue: var(--bg-accent-blue);
+  --color-bg-accent-green: var(--bg-accent-green);
+  --color-bg-accent-orange: var(--bg-accent-orange);
+  --color-bg-accent-pink: var(--bg-accent-pink);
+  --color-bg-accent-dark: var(--bg-accent-dark);
+
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-accent-red-default: var(--border-accent-red-default);
+  --color-border-accent-violet: var(--border-accent-violet);
+
+  --color-static-white: var(--static-white);
+  --color-static-black: var(--static-black);
+
+  --color-grey-20: var(--grey-20);
+  --color-grey-50: var(--grey-50);
+  --color-grey-100: var(--grey-100);
+  --color-grey-200: var(--grey-200);
+  --color-grey-300: var(--grey-300);
+  --color-grey-400: var(--grey-400);
+  --color-grey-500: var(--grey-500);
+  --color-grey-600: var(--grey-600);
+  --color-grey-700: var(--grey-700);
+  --color-grey-800: var(--grey-800);
+  --color-grey-900: var(--grey-900);
+  --color-grey-950: var(--grey-950);
+  --color-red-50: var(--red-50);
+  --color-red-100: var(--red-100);
+  --color-red-500: var(--red-500);
+  --color-yellow-500: var(--yellow-500);
+  --color-orange-500: var(--orange-500);
+  --color-green-500: var(--green-500);
+  --color-blue-500: var(--blue-500);
+  --color-violet-500: var(--violet-500);
+  --color-pink-500: var(--pink-500);
+
+  /* Typography */
+  --font-display-lg: var(--font-family-display-lg);
+  --font-sans: var(--font-family-body-lg-regular);
+
+  /* line-height/letter-spacing per Figma text style; display/lg has no live
+     usage on this page to confirm against, so its pair is inferred from the
+     -1% letter-spacing convention every other style follows and left unset
+     for line-height rather than guessed. */
+  --text-display-lg: var(--font-size-display-lg);
+  --text-display-lg--letter-spacing: -0.32px;
+
+  --text-body-lg: var(--font-size-body-lg-regular);
+  --text-body-lg--line-height: 22px;
+  --text-body-lg--letter-spacing: -0.14px;
+
+  --text-body-sm: var(--font-size-body-sm-regular);
+  --text-body-sm--line-height: 18px;
+  --text-body-sm--letter-spacing: -0.12px;
+
+  --text-link-md: var(--font-size-link-md);
+  --text-link-md--line-height: 22px;
+  --text-link-md--letter-spacing: -0.14px;
+
+  --text-link-sm: var(--font-size-link-sm);
+  --text-link-sm--line-height: 14px;
+  --text-link-sm--letter-spacing: -0.12px;
+
+  --text-heading-md: 20px;
+  --text-heading-md--line-height: 26px;
+  --text-heading-md--letter-spacing: -0.2px;
+
+  --text-heading-sm: 16px;
+  --text-heading-sm--line-height: 22px;
+  --text-heading-sm--letter-spacing: -0.16px;
+}
+
+@layer base {
+  :root {
+    --mono: ui-monospace, Consolas, monospace;
+
+    font:
+      var(--font-size-body-lg-regular) / 145% var(--font-family-body-lg-regular),
+      sans-serif;
+    letter-spacing: 0.18px;
+    color-scheme: light;
+    color: var(--text-primary);
+    background: var(--bg-surface);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "salt" 1;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-family-display-lg), sans-serif;
+    font-weight: var(--font-weight-display-lg);
+    color: var(--text-primary);
+  }
+
+  h1 {
+    font-size: var(--font-size-display-lg);
+    letter-spacing: var(--text-display-lg--letter-spacing);
+    margin: 32px 0;
+    @media (max-width: 1024px) {
+      font-size: 36px;
+      margin: 20px 0;
+    }
+  }
+  h2 {
+    font-size: 24px;
+    line-height: 118%;
+    letter-spacing: -0.24px;
+    margin: 0 0 8px;
+    @media (max-width: 1024px) {
+      font-size: 20px;
+    }
+  }
+  p {
+    margin: 0;
+  }
+
+  code {
+    font-family: var(--mono);
+    display: inline-flex;
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 135%;
+    padding: 4px 8px;
+    background: var(--bg-primary);
+  }
+}
+
+@layer components {
+  /* Shared link treatment: underline sits 20% of the font-size below the
+     text; on hover the underline snaps to text-primary and the text gets a
+     one-shot diagonal shimmer sweep; on mouse-leave the underline color eases
+     back out slowly (the two states intentionally use different transition
+     durations - the hover rule's duration governs entering hover, the base
+     rule's duration governs leaving it). */
+  .link-underline {
+    position: relative;
+    text-decoration-line: underline;
+    text-underline-offset: 20%;
+    text-decoration-color: var(--link-default);
+    transition: text-decoration-color 700ms ease;
+  }
+
+  .link-underline:hover {
+    text-decoration-color: var(--link-hover);
+    transition-duration: 150ms;
+  }
+
+  .note-content h2 {
+    font-family: var(--font-family-display-lg), sans-serif;
+    font-size: var(--text-heading-md);
+    line-height: var(--text-heading-md--line-height);
+    letter-spacing: var(--text-heading-md--letter-spacing);
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .note-content h3 {
+    font-family: var(--font-family-display-lg), sans-serif;
+    font-size: var(--text-heading-sm);
+    line-height: var(--text-heading-sm--line-height);
+    letter-spacing: var(--text-heading-sm--letter-spacing);
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .note-content p {
+    font:
+      var(--text-body-lg) / var(--text-body-lg--line-height)
+        var(--font-family-body-lg-regular),
+      sans-serif;
+    letter-spacing: var(--text-body-lg--letter-spacing);
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .note-content ul,
+  .note-content ol {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 20px;
+    margin: 0;
+    color: var(--text-secondary);
+  }
+
+  .note-content ul {
+    list-style: disc;
+  }
+
+  .note-content ol {
+    list-style: decimal;
+  }
+
+  .note-content blockquote {
+    margin: 0;
+    padding-left: 16px;
+    border-left: 2px solid var(--border-secondary);
+    color: var(--text-secondary);
+  }
+
+  .note-content pre {
+    margin: 0;
+    overflow-x: auto;
+    border-radius: 6px;
+    background: var(--bg-secondary);
+    padding: 16px;
+  }
+
+  .note-content pre code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    display: block;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 150%;
+    color: var(--text-primary);
+  }
+
+  .note-content img,
+  .note-content video {
+    width: 100%;
+    border-radius: 6px;
+  }
+}
+
+@keyframes link-shimmer-sweep {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
