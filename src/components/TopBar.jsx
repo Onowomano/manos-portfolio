@@ -33,8 +33,20 @@ function NavItem({ link }) {
 
 function ThemeToggleIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-      <circle cx="6" cy="6" r="5.375" stroke="currentColor" strokeWidth="1.25" />
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="6"
+        cy="6"
+        r="5.375"
+        stroke="currentColor"
+        strokeWidth="1.25"
+      />
       <path d="M6 0.625a5.375 5.375 0 0 1 0 10.75V0.625z" fill="currentColor" />
     </svg>
   );
@@ -49,7 +61,7 @@ export default function TopBar() {
     <div className="fixed inset-x-0 top-0 z-1">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[96px] bg-gradient-to-b from-bg-surface via-bg-surface/80 to-transparent md:h-[120px]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[96px] bg-gradient-to-b from-bg-surface via-bg-surface/80 to-transparent md:hidden"
       />
       <div className="relative flex items-start justify-between px-[16px] pt-[20px] md:px-[56px] md:pt-[30px]">
         <nav className="relative text-link-sm">
@@ -80,7 +92,9 @@ export default function TopBar() {
         <div className="flex items-center text-link-sm text-text-primary">
           <p
             className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out md:mr-[4px] md:max-w-[100px] md:opacity-100 ${
-              scrolled ? "mr-0 max-w-0 opacity-0" : "mr-[4px] max-w-[100px] opacity-100"
+              scrolled
+                ? "mr-0 max-w-0 opacity-0"
+                : "mr-[4px] max-w-[100px] opacity-100"
             }`}
           >
             {time} <span className="text-text-tertiary">WAT</span>
