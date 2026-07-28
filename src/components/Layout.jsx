@@ -1,17 +1,15 @@
 import { Outlet } from "react-router-dom";
-import TopLinks from "./TopLinks";
-import TopRightWidget from "./TopRightWidget";
+import TopBar from "./TopBar";
 import FloatingBreadcrumb from "./FloatingBreadcrumb";
 import BottomLinks from "./BottomLinks";
 
 export default function Layout() {
   return (
     <>
-      <TopLinks />
-      <TopRightWidget />
+      <TopBar />
       <FloatingBreadcrumb />
-      <BottomLinks />
       <Outlet />
+      <BottomLinks />
     </>
   );
 }

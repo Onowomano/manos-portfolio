@@ -1,7 +1,39 @@
 import Avatar from "./Avatar";
+import CopyEmailButton from "./CopyEmailButton";
+import { siteLinks } from "../data/links";
 
 const linkClass = "link-underline";
 const linkProps = { target: "_blank", rel: "noopener noreferrer" };
+
+function EmailLink() {
+  const email = siteLinks.email.replace(/^mailto:/, "");
+
+  return (
+    <span className="group inline-flex items-center gap-[2px]">
+      <a
+        href={siteLinks.email}
+        aria-label={`Email ${email}`}
+        className={`${linkClass} relative inline-grid w-[37px] overflow-hidden align-bottom transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-[188px]`}
+      >
+        <span
+          aria-hidden="true"
+          className="col-start-1 row-start-1 whitespace-nowrap transition-all duration-300 ease-in group-hover:-translate-y-[6px] group-hover:opacity-0"
+        >
+          email
+        </span>
+        <span
+          aria-hidden="true"
+          className="col-start-1 row-start-1 translate-y-[6px] whitespace-nowrap opacity-0 transition-all duration-300 delay-100 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+        >
+          {email}
+        </span>
+      </a>
+      <span className="inline-flex scale-75 opacity-0 transition-all duration-300 delay-150 ease-out group-hover:scale-100 group-hover:opacity-100">
+        <CopyEmailButton email={email} />
+      </span>
+    </span>
+  );
+}
 
 export default function Hero() {
   return (
@@ -18,11 +50,19 @@ export default function Hero() {
               Kuda
             </a>
             ,{" "}
-            <a href="https://www.semicolon.africa" {...linkProps} className={linkClass}>
+            <a
+              href="https://www.semicolon.africa"
+              {...linkProps}
+              className={linkClass}
+            >
               Semicolon
             </a>
             ,{" "}
-            <a href="https://www.mofi.com.ng" {...linkProps} className={linkClass}>
+            <a
+              href="https://www.mofi.com.ng"
+              {...linkProps}
+              className={linkClass}
+            >
               Ministry of Finance (Nigeria)
             </a>{" "}
             and more.
@@ -38,17 +78,22 @@ export default function Hero() {
           </p>
           <p>
             Say hi on{" "}
-            <a href="https://twitter.com/onowomano" {...linkProps} className={linkClass}>
+            <a
+              href="https://twitter.com/onowomano"
+              {...linkProps}
+              className={linkClass}
+            >
               Twitter
             </a>
             ,{" "}
-            <a href="https://linkedin.com/in/onowomano" {...linkProps} className={linkClass}>
+            <a
+              href="https://linkedin.com/in/onowomano"
+              {...linkProps}
+              className={linkClass}
+            >
               Linkedin
             </a>{" "}
-            or send me an{" "}
-            <a href="mailto:milueziogbaudu@gmail.com" {...linkProps} className={linkClass}>
-              email
-            </a>
+            or send me an <EmailLink />
           </p>
         </div>
       </div>

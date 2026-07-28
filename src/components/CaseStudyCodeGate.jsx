@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Copy2Line, CheckLine } from "@mingcute/react";
 import CodeInput from "./CodeInput";
+import CopyEmailButton from "./CopyEmailButton";
 import { siteLinks } from "../data/links";
 
 const SHAKE_DURATION_MS = 400;
-const COPY_RESET_MS = 800;
 
 function unlockKey(slug) {
   return `case-study-unlocked:${slug}`;
@@ -24,33 +23,6 @@ async function sha256Hex(text) {
   return Array.from(new Uint8Array(hashBuffer))
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
-}
-
-function CopyEmailButton({ email }) {
-  const [copied, setCopied] = useState(false);
-
-  function handleCopy() {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), COPY_RESET_MS);
-  }
-
-  return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      aria-label="Copy email address"
-      className={`flex size-[16px] shrink-0 items-center justify-center ${
-        copied ? "text-icon-accent-green" : "text-text-tertiary"
-      }`}
-    >
-      {copied ? (
-        <CheckLine className="size-[16px]" />
-      ) : (
-        <Copy2Line className="size-[16px]" />
-      )}
-    </button>
-  );
 }
 
 export default function CaseStudyCodeGate({ slug, codeHashes, codeLength = 5, onUnlock }) {

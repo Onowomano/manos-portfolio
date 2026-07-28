@@ -21,7 +21,7 @@ export default function CaseStudyDetailPage() {
 
   if (!study) {
     return (
-      <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[24px] px-4 md:px-6 py-46 md:py-24">
+      <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[24px] px-4 md:px-6 pt-46 pb-24 md:py-24">
         <p className="text-body-lg text-text-tertiary">Case study not found.</p>
         <Link
           to="/case-studies"
@@ -34,7 +34,7 @@ export default function CaseStudyDetailPage() {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[28px] px-4 md:px-6 py-46 md:py-24">
+    <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[28px] px-4 md:px-6 pt-46 pb-24 md:py-24">
       <Link
         to="/case-studies"
         className="link-underline flex w-fit items-center gap-[4px] text-link-sm text-text-tertiary"

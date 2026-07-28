@@ -14,7 +14,7 @@ export default function CaseStudiesIndexPage() {
     active === "all" ? studies : studies.filter((study) => study.categories.includes(active));
 
   return (
-    <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[48px] px-4 md:px-6 py-46 md:py-24">
+    <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[48px] px-4 md:px-6 pt-46 pb-24 md:py-24">
       <section className="flex flex-col gap-[14px]">
         <SectionHeading>Case studies ({filtered.length})</SectionHeading>
         <CategoryFilter categories={categories} active={active} onChange={setActive} />

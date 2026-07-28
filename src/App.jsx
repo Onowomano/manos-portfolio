@@ -13,7 +13,7 @@ import {
 
 function App() {
   return (
-    <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[48px] px-4 md:px-6 py-46 md:py-24">
+    <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[48px] px-4 md:px-6 pt-46 pb-24 md:py-24">
       <Hero />
 
       <section className="flex flex-col gap-[36px]">
