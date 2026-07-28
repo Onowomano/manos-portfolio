@@ -58,13 +58,13 @@ export default function TopBar() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="fixed inset-x-0 top-0 z-1">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-1">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[96px] bg-gradient-to-b from-bg-surface via-bg-surface/80 to-transparent md:hidden"
+        className="absolute inset-x-0 top-0 h-[96px] bg-gradient-to-b from-bg-surface via-bg-surface/80 to-transparent md:hidden"
       />
       <div className="relative flex items-start justify-between px-[16px] pt-[20px] md:px-[56px] md:pt-[30px]">
-        <nav className="relative text-link-sm">
+        <nav className="relative text-link-sm pointer-events-auto">
           <div
             className={`flex flex-col items-start gap-[10px] transition-all duration-300 ease-out md:opacity-100 md:translate-y-0 md:pointer-events-auto ${
               scrolled
@@ -89,7 +89,7 @@ export default function TopBar() {
           </div>
         </nav>
 
-        <div className="flex items-center text-link-sm text-text-primary">
+        <div className="flex items-center text-link-sm text-text-primary pointer-events-auto">
           <p
             className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out md:mr-[4px] md:max-w-[100px] md:opacity-100 ${
               scrolled
