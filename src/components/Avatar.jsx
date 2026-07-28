@@ -22,15 +22,33 @@ export default function Avatar({ statusOverride }) {
         <Icon className="size-[12px]" color={status.badgeIconColor} />
       </span>
       {status.thinkingBubble.enabled && (
-        <div
-          className={
-            "absolute -top-[34px] left-1/2 -translate-x-1/2 whitespace-nowrap rounded-[10px] " +
-            "border border-border-primary bg-bg-white px-[10px] py-[6px] text-body-sm text-text-secondary shadow-sm " +
-            "after:absolute after:left-1/2 after:top-full after:size-0 after:-translate-x-1/2 " +
-            "after:border-[5px] after:border-transparent after:border-t-bg-surface after:content-['']"
-          }
-        >
-          {status.thinkingBubble.text}
+        <div className="absolute -top-[34px] left-1/2 -translate-x-1/2 whitespace-nowrap">
+          {/* relative anchor so the tail svg's `top-full` positions against
+              this bubble box instead of the outer avatar wrapper */}
+          <div className="relative drop-shadow-[0_0_2px_rgba(0,0,0,0.08)]">
+            <div className="relative z-[1] rounded-[6px] border border-border-primary bg-bg-white px-[10px] py-[6px] text-body-sm text-text-secondary">
+              {status.thinkingBubble.text}
+            </div>
+            {/* Curved tail + trailing dot, traced from the Figma "chat" vector
+                (node 299:17998) so the shape matches exactly instead of a
+                CSS-triangle approximation. */}
+            <svg
+              className="absolute left-1/2 top-full -translate-x-1/2 fill-bg-white"
+              width="14"
+              height="15"
+              viewBox="38 26 14 15"
+              aria-hidden="true"
+            >
+              <path d="M51.7285 26.543C51.3585 26.592 51.0072 26.7415 50.7168 26.9814L48.4062 28.8916L46.3506 30.9473C44.7176 32.5803 41.9288 31.8332 41.3311 29.6025L40.8467 27.793C40.6622 27.1045 40.07 26.6113 39.3721 26.543Z" />
+              <path
+                d="M51.7285 26.543C51.3585 26.592 51.0072 26.7415 50.7168 26.9814L48.4062 28.8916L46.3506 30.9473C44.7176 32.5803 41.9288 31.8332 41.3311 29.6025L40.8467 27.793C40.6622 27.1045 40.07 26.6113 39.3721 26.543"
+                fill="none"
+                className="stroke-border-primary"
+                strokeWidth="1"
+              />
+              <circle cx="41.1074" cy="37.7539" r="2.5899" className="stroke-border-primary" strokeWidth="1" />
+            </svg>
+          </div>
         </div>
       )}
     </div>

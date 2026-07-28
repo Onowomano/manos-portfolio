@@ -1,0 +1,23 @@
+---
+title: "It Depends. My favourite UX phrase #1"
+date: "2026-07-28"
+excerpt: "Notes on why the cart is one of the most under-designed parts of online shopping."
+---
+
+A few days ago, we were redesigning the airtime purchase flow on the Kuda app.
+
+As part of the redesign, we'd just finished building a phone number field component which, at first glance, felt like the obvious choice for the airtime flow.
+
+The problem was that Kuda only allows customers to buy airtime for Nigerian telcos. Our phone number field shows a country code, which usually defaults to Nigeria (+234), but in this case it was actually unnecessary and would only add visual clutter.
+
+So what did we do?
+
+We used a regular text field.
+
+No country code. Just type in the number, 08012345678, and move on.
+
+The reason was pretty simple. When you're buying airtime, you don't really think about country codes. They only become relevant when you're dealing with international phone numbers.
+
+Think about it this way. If you want to call a dispatch rider, you don't dial +234 first. You just type 08012345678 because that's all you need.
+
+It's a small decision, but it's a good reminder that components are only as good as the context they're used in. Sometimes the right design isn't the most reusable one, it's the one that gets out of the user's way.

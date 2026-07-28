@@ -1,0 +1,149 @@
+Google Developer Group (GDG) Lagos hosts [DevFestLagos](https://devfestlagos.com), a yearly community event where software engineers, product managers, product designers, and aspiring tech professionals come together to learn and connect.
+
+In 2023, after collaborating with the DevFestLagos team on merchandise production, a conversation with one of the organizers revealed a major operational challenge: delayed ticket payout settlements.
+
+The event management platform they used, Nigeria’s largest at the time, only processed payouts every other Friday. This meant organizers often had to wait days to access ticket revenue. In an ecosystem like Nigeria’s, where cash flow and instant settlements are critical, this **delay limited how much organizers could do independently without relying on sponsors.**
+
+That conversation became the foundation for Tikket.
+
+> **Problem Statement**
+> 
+> How might we help event organizers like DevFestLagos access their ticket revenue faster, while still giving them the tools they need to manage events end-to-end?
+
+## Goals
+
+- Reduce ticket payout time for organizers
+- Enable organizers to manage events end-to-end from one platform
+- Provide essential tools beyond payouts (attendees, tickets, check-in, promotion)
+
+## Research & Discovery
+
+Before building anything, I wanted to deeply understand the problem space.
+
+Alongside a friend who actively organizes small events, we reached out to 50 event organizers, ranging from large community events like DevFestLagos to small, independent organizers hosting niche gatherings.
+
+**Key insights**
+- Faster payouts were highly desirable, but not sufficient on their own
+- Organizers still needed basic event management tools to operate smoothly
+
+
+Common needs included:
+- Creating and publishing events
+- Setting ticket prices
+- Promoting events
+- Receiving payouts
+- Viewing and checking in attendees
+
+![User Research Data Metric](/tikket/tikket-pie-chart.png)
+
+Two needs stood out consistently:
+1. Fast payouts
+2. Event promotion
+
+### Organizer Segments
+
+We identified two main categories:
+
+**Large event organizers**
+- Could tolerate delayed payouts in some cases
+- Still valued faster access to funds, especially for community-driven events
+
+**Small–medium event organizers**
+- Relied heavily on ticket revenue to fund operations
+- Needed fast payouts and promotion tools the most
+
+We chose to focus on small–medium event organizers, as they experienced the highest pain and stood to benefit most from faster settlements
+
+
+## Solution
+
+The core solution was next-day payouts.
+
+Building a proprietary payment engine wasn’t feasible due to regulatory and licensing constraints, so I explored existing payment infrastructure in Nigeria.
+
+After research, I found that Paystack’s split payment API could support our goal.
+
+How it works:
+- Paystack receives ticket payments.
+- Both the organizer’s funds and Tikket’s platform fee are automatically paid out the next day.
+
+This removed the traditional delay where platforms collect funds first and settle organizers later.
+
+While payouts weren’t instant, next-day settlement was a significant improvement.
+
+![Regular Payment Flow](/tikket/payment-flow-1.png)
+
+
+![Tikket's Payment Solution](/tikket/payment-flow-2.png)
+
+## Personas
+
+To design the full experience, I defined two personas:
+- Event organizers
+- Guests (ticket buyers)
+
+The product was designed organizer-first, ensuring they could run events without relying on external tools.
+
+## Key Features (Organizer-focused)
+- Google authentication for fast sign-up and login
+- Event creation and management
+- Ticket creation and pricing
+- Attendee list and check-in
+- Discount codes
+- Automated and manual event reminders
+
+## Create Account
+<Vimeo id="1158852259" title="Tikket - Create Account"></Vimeo>
+
+![Sign up flow](/tikket/create-account.png)
+
+## Create Event
+<Vimeo id="1158831098" title="Tikket - Create Event"></Vimeo>
+
+![Option to create events as an individual or an organization](/tikket/host-event.png)
+
+![Event details for creating an event](/tikket/create-event.png)
+
+![Adding a payment account before their first event goes live](/tikket/add-payout-account.png)
+
+## Manage Events
+Before the organizer creates an event, they can choose if they are a business (larger event organizer) or an individual (small event organizer).
+
+![Event guest's list](/tikket/view-guests.png)
+
+![Orgainzer's payout history](/tikket/view-payout.png)
+
+## Buying Tickets
+Guest can easily buy tickets even without creating an account. Try this sample event [click here](https://tikket-online.vercel.app/25-on-25)
+
+<Vimeo id="1158854352" title="Buy Tickets" height ="684px" maxheight="684px" ></Vimeo>
+
+![Details for buying a ticket](/tikket/tikket-buy-ticket-2.png)
+
+![Ticket purchase successful](/tikket/tikket-buy-ticket-1.png)
+
+## Impact
+
+Development began in February 2025 with:
+- 1 frontend engineer
+- 1 backend engineer
+
+The MVP was completed in June 2025 (4 months).
+
+Post-launch results:
+- 41 organizers
+- 3 recurring organizers
+- 56 events hosted
+- 317 paid tickets sold
+- 336 total guests
+- ₦57,789 in revenue
+
+We also built a custom back-office to track platform performance and ticket sales.
+
+![Tikket Backoffice Dashboard](/tikket/tikket-metrics.png)
+
+## Takeaway
+
+- Strong MVP scoping was critical to shipping on time.
+- Faster payouts are a powerful differentiator, but distribution and marketing matter just as much.
+- The revenue model works, but success depends on scale.

@@ -280,6 +280,99 @@
     width: 100%;
     border-radius: 6px;
   }
+
+  /* Case study body: unlike .note-content, headings are the same 14px/22px
+     size as body text (only distinguished by text-primary vs text-secondary
+     color) — matches the Figma reference exactly, so it gets its own block
+     rather than reusing .note-content's larger heading treatment. */
+  .case-study-content {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.28px;
+    color: var(--text-secondary);
+  }
+
+  .case-study-content > :first-child {
+    margin-top: 0;
+  }
+
+  /* Shorthand also zeroes right/bottom/left, so this is the single source
+     of truth for spacing — the type-specific rules below must not touch
+     margin, or their higher selector specificity silently wins over this. */
+  .case-study-content > * {
+    margin: 28px 0 0;
+  }
+
+  .case-study-content > h2 + p,
+  .case-study-content > h2 + ul,
+  .case-study-content > h2 + ol,
+  .case-study-content > h3 + p,
+  .case-study-content > h3 + ul,
+  .case-study-content > h3 + ol,
+  .case-study-content > p + p,
+  .case-study-content > p + ul,
+  .case-study-content > p + ol,
+  .case-study-content > ul + p,
+  .case-study-content > ol + p {
+    margin-top: 8px;
+  }
+
+  .case-study-content h2,
+  .case-study-content h3 {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.28px;
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+
+  .case-study-content strong {
+    font-weight: var(--font-weight-body-lg-regular);
+    color: var(--text-primary);
+  }
+
+  .case-study-content ul,
+  .case-study-content ol {
+    padding-left: 21px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .case-study-content ul {
+    list-style: disc;
+  }
+
+  .case-study-content ol {
+    list-style: decimal;
+  }
+
+  .case-study-content blockquote {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 6px;
+    background: var(--bg-primary);
+  }
+
+  .case-study-content blockquote > p:first-child {
+    margin: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-secondary);
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .case-study-content blockquote > :not(:first-child) {
+    margin: 0;
+  }
+
+  .case-study-content blockquote ul,
+  .case-study-content blockquote ol {
+    padding-left: 21px;
+  }
 }
 
 @keyframes link-shimmer-sweep {
@@ -288,5 +381,25 @@
   }
   to {
     background-position: -50% 0;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
   }
 }

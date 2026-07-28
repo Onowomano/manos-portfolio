@@ -18,6 +18,7 @@
   --red-50: #fef2f2;
   --red-100: #fee2e2;
   --red-500: #ef4444;
+  --red-950: #450a0a;
   --yellow-500: #eab308;
   --orange-500: #f97316;
   --green-500: #22c55e;
@@ -45,7 +46,7 @@
   --bg-white: var(--white);
 
   --border-primary: var(--grey-50);
-  --border-secondary: var(--grey-100);
+  --border-secondary: var(--grey-200);
 
   --icon-accent-green: var(--green-500);
   --icon-accent-red: var(--red-500);
@@ -95,8 +96,9 @@
   --bg-secondary: var(--grey-800);
   --bg-tertiary: var(--grey-700);
   --bg-white: var(--grey-900);
+  --bg-accent-red-light: var(--red-950);
 
-  --border-primary: var(--grey-900);
+  --border-primary: var(--grey-950);
   --border-secondary: var(--grey-800);
 
   --link-default: var(--grey-600);

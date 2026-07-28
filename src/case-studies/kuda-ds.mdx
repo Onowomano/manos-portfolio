@@ -1,0 +1,124 @@
+Kuda’s design team was growing quickly to meet the design needs of the expansion project. What started as a team of 5 designers grew into a team of 10–15 designers.
+
+All design assets were stored within individual design files on a page named **“Design System.”** The objective was simple: create UI elements as reusable and discoverable components.
+
+---
+
+> **Goals**
+>
+> - Create a design system in Figma with the team in mind
+> - Reduce the time it takes to find components by making them reusable and discoverable
+> - Reduce dependency on the team lead through documentation
+> - Onboard new team members faster in a fast-paced environment
+
+---
+
+## Problem
+
+Consolidating existing visual styles and elements into one design system wasn’t the main challenge. The major issues were:
+
+- Kuda was expanding, and a new app was being built with different design styles
+- The design system had to account for both old and new component styles
+- Kuda was preparing to launch a business app
+- Mobile and web had differences in component styles
+
+![Old vs New App](/kuda-ds/Old-New-App.png)
+
+---
+
+## Kuda’s Design System
+
+I tackled each product one at a time, starting with the Legacy app since it had the most foundational UI elements and styles, then scaling it across other Kuda products.
+
+---
+
+## User Research
+
+Most of the research focused on cross-platform and multi-brand design systems. I explored how to structure and organize design system files and settled on a separate-files approach—where foundations (styles) and component libraries lived in separate files published to the workspace.
+
+---
+
+## Design Audit
+
+I reviewed the app to identify UI elements that were repeatedly used and added them to an existing list of predefined components to be created. At the time, there were about five live features spread across different Figma pages.
+
+![Screenshot of the auditing on Figma](/kuda-ds/Audit-1.png)
+
+---
+
+## Structure
+
+The **Foundation** file initially contained styles such as text styles, colours, shadows, and icons. These styles were published to the workspace as the design system.
+
+After testing this approach, it became clear that icons and text styles worked better in their own separate files.
+
+Eventually, we settled on a four-file design system structure:
+
+- Foundations
+- Text Styles
+- Icons
+- Component Libraries
+
+![How the design system is structured](/kuda-ds/Figma-Architecture.png)
+
+---
+
+## Component Library
+
+Separate components were created for mobile and web due to their differences. As a result:
+
+- Two libraries were maintained for components
+- A single shared library was used for Android and iOS (mobile)
+
+![Component checklist](/kuda-ds/Component-List.png)
+
+![Component sticker sheet](/kuda-ds/Components.png)
+
+---
+
+## Theming
+
+In addition to light and dark themes, a new theme was introduced for **Kuda Business**.  
+Kuda Business is a different bank account type for business owners. While the product core remained the same as the retail app, the main differences were branding elements such as logo and colour.
+
+---
+
+## Documentation
+
+Documentation initially lived on Notion, with links to each component’s documentation added in Figma. Although documentation was slow, it was necessary for mass adoption across the team, including engineers.
+
+Some documentation was also created directly in Figma, alongside short video demos for components.
+
+![Notion Documentation](/kuda-ds/Documentation.png)
+
+---
+
+## Adoption (Internal Communication)
+
+Updates to the design system are shared on Slack under **k-designsystem**, with short meetings held for major changes or migrations.
+
+Future plans include:
+
+- Launching a newsletter for design system updates
+- Creating a Kuda design system website with documentation and a sandbox for testing components
+
+---
+
+## Impact
+
+- Used by **13 designers**
+- Maintained by **2 designers**
+- **3 component libraries** (Web, Mobile, Icons)
+- **100+ components**
+- Used across **3+ Kuda products**
+
+![Screenshot of Figma's Library Analytics showing the usage](/kuda-ds/DS-Metric.png)
+
+---
+
+## Takeaway
+
+- Built a multi-brand design system with theming support
+- Established a clear file structure: Foundations, Component Libraries, Text Styles, and Icon Library
+
+![Feedback from my line manager](/kuda-ds/Social-Proof.png)

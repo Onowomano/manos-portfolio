@@ -1,15 +1,33 @@
 import { useLocation, useParams } from "react-router-dom";
-import { Home2Fill, SignatureFill } from "@mingcute/react";
+import { Home2Fill, SignatureFill, Book6Fill } from "@mingcute/react";
+
+function Crumb({ tertiary, children }) {
+  return (
+    // 14px/18px/-0.28px is a local override in the design, not the link/md
+    // text style (which is 14px/22px/-0.14px) — matched here as-is.
+    <p
+      className={`text-[14px] leading-[18px] tracking-[-0.28px] ${
+        tertiary ? "text-text-tertiary" : "text-text-primary"
+      }`}
+    >
+      {children}
+    </p>
+  );
+}
 
 export default function FloatingBreadcrumb() {
   const { pathname } = useLocation();
   const { slug } = useParams();
 
-  if (slug) return null;
+  const isNoteDetail = slug && pathname.startsWith("/notes/");
+  const isCaseStudyDetail = slug && pathname.startsWith("/case-studies/");
+
+  if (isNoteDetail) return null;
 
   const isNotes = pathname === "/notes";
-  const label = isNotes ? "notes" : "home";
-  const Icon = isNotes ? SignatureFill : Home2Fill;
+  const isCaseStudies = pathname === "/case-studies" || isCaseStudyDetail;
+  const label = isCaseStudyDetail ? slug : isNotes ? "notes" : isCaseStudies ? "case studies" : "home";
+  const Icon = isNotes ? SignatureFill : isCaseStudies ? Book6Fill : Home2Fill;
 
   return (
     <div
@@ -19,14 +37,14 @@ export default function FloatingBreadcrumb() {
           "0px 16px 8px rgba(0,0,0,0.06), 0px 2px 4px rgba(0,0,0,0.08)",
       }}
     >
-      {/* 14px/18px/-0.28px is a local override in the design, not the link/md
-          text style (which is 14px/22px/-0.14px) — matched here as-is. */}
-      <p className="text-[14px] leading-[18px] tracking-[-0.28px] text-text-tertiary">
-        mano
-      </p>
-      <p className="text-[14px] leading-[18px] tracking-[-0.28px] text-text-tertiary">
-        /
-      </p>
+      <Crumb tertiary>mano</Crumb>
+      <Crumb tertiary>/</Crumb>
+      {isCaseStudyDetail && (
+        <>
+          <Crumb tertiary>Case studies</Crumb>
+          <Crumb tertiary>/</Crumb>
+        </>
+      )}
       <div className="flex items-center gap-[4px] rounded-full bg-bg-primary px-[8px] py-[6px]">
         <Icon className="size-[14px] text-text-primary" />
         <p className="text-[14px] leading-[18px] tracking-[-0.28px] text-text-primary">

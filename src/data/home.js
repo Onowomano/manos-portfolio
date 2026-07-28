@@ -10,7 +10,7 @@ import { siteLinks } from "./links";
 
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Case studies", href: "#" },
+  { label: "Case studies", href: "/case-studies" },
   { label: "Notes", href: "/notes" },
   { label: "Resume", href: siteLinks.resume },
   { label: "Github", href: siteLinks.github },
