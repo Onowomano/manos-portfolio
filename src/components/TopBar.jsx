@@ -21,7 +21,7 @@ function NavItem({ link }) {
   return (
     <a
       href={link.href}
-      {...(link.label === "Resume"
+      {...(link.label === "Resume" || link.label === "Github"
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
       className="link-underline whitespace-nowrap text-text-secondary"

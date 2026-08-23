@@ -51,11 +51,11 @@ export default function Hero() {
             </a>
             ,{" "}
             <a
-              href="https://www.semicolon.africa"
+              href="https://www.lemfi.com"
               {...linkProps}
               className={linkClass}
             >
-              Semicolon
+              LemFi
             </a>
             ,{" "}
             <a

@@ -192,6 +192,7 @@
      rule's duration governs leaving it). */
   .link-underline {
     position: relative;
+    cursor: pointer;
     text-decoration-line: underline;
     text-underline-offset: 20%;
     text-decoration-color: var(--link-default);

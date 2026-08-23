@@ -7,18 +7,28 @@ import { getAllCaseStudies } from "../data/caseStudies";
 export default function CaseStudiesIndexPage() {
   const studies = getAllCaseStudies();
   const categoryOrder = ["mobile", "web", "interactions"];
-  const availableCategories = new Set(studies.flatMap((study) => study.categories));
-  const categories = categoryOrder.filter((category) => availableCategories.has(category));
+  const availableCategories = new Set(
+    studies.flatMap((study) => study.categories),
+  );
+  const categories = categoryOrder.filter((category) =>
+    availableCategories.has(category),
+  );
   const [active, setActive] = useState("all");
   const filtered =
-    active === "all" ? studies : studies.filter((study) => study.categories.includes(active));
+    active === "all"
+      ? studies
+      : studies.filter((study) => study.categories.includes(active));
 
   return (
     <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[48px] px-4 md:px-6 pt-46 pb-24 md:py-24">
-      <section className="flex flex-col gap-[14px]">
+      <section className="flex flex-col gap-[20px]">
         <SectionHeading>Case studies ({filtered.length})</SectionHeading>
-        <CategoryFilter categories={categories} active={active} onChange={setActive} />
-        <div className="flex flex-col gap-[32px]">
+        <CategoryFilter
+          categories={categories}
+          active={active}
+          onChange={setActive}
+        />
+        <div className="flex flex-col gap-[56px]">
           {filtered.map((study) => (
             <ProjectCard
               key={study.slug}

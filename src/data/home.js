@@ -1,7 +1,11 @@
-import kudaMockup from "../assets/kuda-mockup.png";
-import kudaImage1 from "../assets/Image-01.png";
-import kudaImage2 from "../assets/Image-02.png";
-import kudaImage3 from "../assets/Image-03.png";
+import kudaVideo1 from "../assets/Kuda-app-video-light.mov";
+import kudaVideo1Dark from "../assets/Kuda-app-video-dark.mov";
+import kudaImage2 from "../assets/kuda-send-light.png";
+import kudaImage2Dark from "../assets/kuda-send-dark.png";
+import kudaImage3 from "../assets/kuda-duo-light.png";
+import kudaImage3Dark from "../assets/kuda-duo-dark.png";
+import semicolonVideo1 from "../assets/enum-reject-candidate.mov";
+import semicolonImage2 from "../assets/semicolon-raises-fund-2.jpg";
 import brandKuda from "../assets/brand-kuda.svg";
 import brandSemicolon from "../assets/brand-semicolon.svg";
 import personalBankLogos from "../assets/bank-logos-thumbnail.png";
@@ -28,9 +32,13 @@ export const workProjects = [
       "Kuda is building banking without the limitations of legacy banks. I design user experiences for Kuda's credit products and maintain the design system.",
     badge: { src: brandKuda, alt: "Kuda" },
     images: [
-      { src: kudaImage1, alt: "Kuda app screen 1" },
-      { src: kudaImage2, alt: "Kuda app screen 2" },
-      { src: kudaImage3, alt: "Kuda app screen 3" },
+      {
+        src: "/kuda/more-from-your-money-more-for-your-life.mp4",
+        alt: "More from your money, more for your life",
+      },
+      { src: kudaVideo1, darkSrc: kudaVideo1Dark, alt: "Kuda app screen 1" },
+      { src: kudaImage2, darkSrc: kudaImage2Dark, alt: "Kuda app screen 2" },
+      { src: kudaImage3, darkSrc: kudaImage3Dark, alt: "Kuda app screen 3" },
     ],
     href: "https://kuda.com",
   },
@@ -39,7 +47,10 @@ export const workProjects = [
     description:
       "Semicolon is training the next generation of S/W engineers. I led the design of a talent management tool.",
     badge: { src: brandSemicolon, alt: "Semicolon" },
-    images: [],
+    images: [
+      { src: semicolonImage2, alt: "Semicolon app screen 1" },
+      { src: semicolonVideo1, alt: "Semicolon app screen 2" },
+    ],
     href: "https://www.semicolon.africa",
   },
 ];
@@ -50,7 +61,7 @@ export const personalProjects = [
     description:
       "A free, open source collection of 500+ Nigerian bank logos for web & mobile apps.",
     image: { src: personalBankLogos, alt: "Nigerian Bank Logos" },
-    href: "https://www.figma.com/community/file/1646585282227125344/nigerian-bank-logos",
+    href: "https://ngbanklogos.vercel.app",
   },
   {
     title: "Tikket",

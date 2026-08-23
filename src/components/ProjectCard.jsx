@@ -4,7 +4,7 @@ import Gallery from './Gallery';
 export default function ProjectCard({ title, description, badge, images, href, to }) {
   return (
     <div className="flex flex-col gap-[26px]">
-      <Gallery images={images} badge={badge} />
+      <Gallery images={images} badge={badge} showArrows={false} />
       <div className="flex flex-col gap-[4px]">
         {to ? (
           <Link to={to} className="link-underline text-link-md text-text-primary">

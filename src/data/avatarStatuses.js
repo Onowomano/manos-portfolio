@@ -35,7 +35,7 @@ export const avatarStatuses = [
     badgeClassName: "bg-bg-accent-orange",
     badgeIconColor: "var(--static-white)",
     icon: TimeFill,
-    thinkingBubble: { enabled: false },
+    thinkingBubble: { enabled: false, text: "Away" },
   },
   {
     key: "online",
@@ -44,7 +44,7 @@ export const avatarStatuses = [
     badgeClassName: "bg-bg-accent-green",
     badgeIconColor: "var(--static-white)",
     icon: Tv1Fill,
-    thinkingBubble: { enabled: false },
+    thinkingBubble: { enabled: false, text: "Active rn" },
   },
   {
     key: "offline",
@@ -53,7 +53,7 @@ export const avatarStatuses = [
     badgeClassName: "bg-bg-tertiary",
     badgeIconColor: "var(--static-white)",
     icon: MoonFill,
-    thinkingBubble: { enabled: false },
+    thinkingBubble: { enabled: false, text: "Offline" },
     default: true,
   },
   {
