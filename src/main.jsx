@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './index.css'
 import Layout from './components/Layout.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 import App from './App.jsx'
 import NotesIndexPage from './pages/NotesIndexPage.jsx'
 import NoteDetailPage from './pages/NoteDetailPage.jsx'
@@ -12,6 +13,7 @@ import CaseStudyDetailPage from './pages/CaseStudyDetailPage.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<App />} />

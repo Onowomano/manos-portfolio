@@ -37,6 +37,7 @@ export default function CaseStudiesIndexPage() {
               badge={study.badge}
               images={study.images}
               to={`/case-studies/${study.slug}`}
+              showArrows={false}
             />
           ))}
         </div>

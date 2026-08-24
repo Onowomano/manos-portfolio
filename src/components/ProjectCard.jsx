@@ -1,18 +1,29 @@
-import { Link } from 'react-router-dom';
-import Gallery from './Gallery';
+import { Link } from "react-router-dom";
+import Gallery from "./Gallery";
 
-export default function ProjectCard({ title, description, badge, images, href, to }) {
+export default function ProjectCard({
+  title,
+  description,
+  badge,
+  images,
+  href,
+  to,
+  showArrows = true,
+}) {
   return (
     <div className="flex flex-col gap-[26px]">
-      <Gallery images={images} badge={badge} showArrows={false} />
+      <Gallery images={images} badge={badge} showArrows={showArrows} />
       <div className="flex flex-col gap-[4px]">
         {to ? (
-          <Link to={to} className="link-underline text-link-md text-text-primary">
+          <Link
+            to={to}
+            className="link-underline text-link-md text-text-primary"
+          >
             {title}
           </Link>
         ) : (
           <a
-            href={href ?? '#'}
+            href={href ?? "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="link-underline text-link-md text-text-primary"
