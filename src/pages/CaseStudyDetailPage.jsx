@@ -50,9 +50,9 @@ export default function CaseStudyDetailPage() {
           </div>
 
           <div className="flex flex-col gap-[20px]">
-            <p className="text-[14px] leading-[22px] tracking-[-0.28px] text-text-primary">
+            <h2 className="font-display-md text-display-md font-medium text-text-primary">
               {study.title}
-            </p>
+            </h2>
             <div className="case-study-content flex flex-col">
               {LazyBody && (
                 <Suspense fallback={null}>

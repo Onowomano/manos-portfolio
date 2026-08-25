@@ -111,6 +111,14 @@
   --font-size-display-lg: 32px;
   --font-weight-display-lg: 500;
 
+  --font-family-display-md: "Open Runde";
+  --font-size-display-md: 20px;
+  --font-weight-display-md: 500;
+
+  --font-family-display-sm: "Open Runde";
+  --font-size-display-sm: 16px;
+  --font-weight-display-sm: 500;
+
   --font-family-body-lg-regular: "Inter";
   --font-size-body-lg-regular: 14px;
   --font-weight-body-lg-regular: 400;

@@ -11,7 +11,10 @@ export default function NoteDetailPage() {
     return (
       <main className="mx-auto flex w-full max-w-[560px] flex-col gap-[24px] px-4 md:px-6 pt-46 pb-24 md:py-24">
         <p className="text-body-lg text-text-tertiary">Note not found.</p>
-        <Link to="/notes" className="link-underline text-link-md text-text-primary">
+        <Link
+          to="/notes"
+          className="link-underline text-link-md text-text-primary"
+        >
           Back to notes
         </Link>
       </main>
@@ -29,9 +32,13 @@ export default function NoteDetailPage() {
       </Link>
 
       <div className="flex flex-col gap-[20px]">
-        <header className="flex flex-col gap-[6px] text-body-lg">
-          <p className="font-medium text-text-primary">{note.title}</p>
-          <p className="text-text-tertiary">{formatNoteDate(note.date)}</p>
+        <header className="flex flex-col gap-[0px]">
+          <h2 className="font-display-md text-display-md font-medium text-text-primary">
+            {note.title}
+          </h2>
+          <p className="font-sans text-body-lg text-text-tertiary">
+            {formatNoteDate(note.date)}
+          </p>
         </header>
 
         <div className="note-content flex flex-col gap-[20px]">

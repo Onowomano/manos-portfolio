@@ -78,6 +78,8 @@
 
   /* Typography */
   --font-display-lg: var(--font-family-display-lg);
+  --font-display-md: var(--font-family-display-md);
+  --font-display-sm: var(--font-family-display-sm);
   --font-sans: var(--font-family-body-lg-regular);
 
   /* line-height/letter-spacing per Figma text style; display/lg has no live
@@ -86,6 +88,17 @@
      for line-height rather than guessed. */
   --text-display-lg: var(--font-size-display-lg);
   --text-display-lg--letter-spacing: -0.32px;
+
+  /* md/sm reuse the -1% letter-spacing convention above; line-heights carry
+     over the values the previous hardcoded h2 (118%) and heading-md (130%)
+     rules already used at these exact sizes. */
+  --text-display-md: var(--font-size-display-md);
+  --text-display-md--line-height: 118%;
+  --text-display-md--letter-spacing: -0.24px;
+
+  --text-display-sm: var(--font-size-display-sm);
+  --text-display-sm--line-height: 130%;
+  --text-display-sm--letter-spacing: -0.2px;
 
   --text-body-lg: var(--font-size-body-lg-regular);
   --text-body-lg--line-height: 22px;
@@ -102,14 +115,6 @@
   --text-link-sm: var(--font-size-link-sm);
   --text-link-sm--line-height: 14px;
   --text-link-sm--letter-spacing: -0.12px;
-
-  --text-heading-md: 20px;
-  --text-heading-md--line-height: 26px;
-  --text-heading-md--letter-spacing: -0.2px;
-
-  --text-heading-sm: 16px;
-  --text-heading-sm--line-height: 22px;
-  --text-heading-sm--letter-spacing: -0.16px;
 }
 
 @layer base {
@@ -142,16 +147,12 @@
     margin: 0;
   }
 
-  h1,
-  h2 {
+  h1 {
     font-family: var(--font-family-display-lg), sans-serif;
     font-weight: var(--font-weight-display-lg);
-    color: var(--text-primary);
-  }
-
-  h1 {
     font-size: var(--font-size-display-lg);
     letter-spacing: var(--text-display-lg--letter-spacing);
+    color: var(--text-primary);
     margin: 32px 0;
     @media (max-width: 1024px) {
       font-size: 36px;
@@ -159,9 +160,12 @@
     }
   }
   h2 {
-    font-size: 24px;
-    line-height: 118%;
-    letter-spacing: -0.24px;
+    font-family: var(--font-family-display-md), sans-serif;
+    font-weight: var(--font-weight-display-md);
+    font-size: var(--font-size-display-md);
+    line-height: var(--text-display-md--line-height);
+    letter-spacing: var(--text-display-md--letter-spacing);
+    color: var(--text-primary);
     margin: 0 0 8px;
     @media (max-width: 1024px) {
       font-size: 20px;
@@ -205,19 +209,21 @@
   }
 
   .note-content h2 {
-    font-family: var(--font-family-display-lg), sans-serif;
-    font-size: var(--text-heading-md);
-    line-height: var(--text-heading-md--line-height);
-    letter-spacing: var(--text-heading-md--letter-spacing);
+    font-family: var(--font-family-display-md), sans-serif;
+    font-weight: var(--font-weight-display-md);
+    font-size: var(--font-size-display-md);
+    line-height: var(--text-display-md--line-height);
+    letter-spacing: var(--text-display-md--letter-spacing);
     color: var(--text-primary);
     margin: 0;
   }
 
   .note-content h3 {
-    font-family: var(--font-family-display-lg), sans-serif;
-    font-size: var(--text-heading-sm);
-    line-height: var(--text-heading-sm--line-height);
-    letter-spacing: var(--text-heading-sm--letter-spacing);
+    font-family: var(--font-family-display-sm), sans-serif;
+    font-weight: var(--font-weight-display-sm);
+    font-size: var(--font-size-display-sm);
+    line-height: var(--text-display-sm--line-height);
+    letter-spacing: var(--text-display-sm--letter-spacing);
     color: var(--text-primary);
     margin: 0;
   }
@@ -282,10 +288,6 @@
     border-radius: 6px;
   }
 
-  /* Case study body: unlike .note-content, headings are the same 14px/22px
-     size as body text (only distinguished by text-primary vs text-secondary
-     color) — matches the Figma reference exactly, so it gets its own block
-     rather than reusing .note-content's larger heading treatment. */
   .case-study-content {
     font-size: 14px;
     line-height: 22px;
@@ -318,13 +320,21 @@
     margin-top: 8px;
   }
 
-  .case-study-content h2,
+  .case-study-content h2 {
+    font-family: var(--font-family-display-md), sans-serif;
+    font-weight: var(--font-weight-display-md);
+    font-size: var(--font-size-display-md);
+    line-height: var(--text-display-md--line-height);
+    letter-spacing: var(--text-display-md--letter-spacing);
+    color: var(--text-primary);
+  }
+
   .case-study-content h3 {
-    font-family: inherit;
-    font-size: 14px;
-    line-height: 22px;
-    letter-spacing: -0.28px;
-    font-weight: 400;
+    font-family: var(--font-family-display-sm), sans-serif;
+    font-weight: var(--font-weight-display-sm);
+    font-size: var(--font-size-display-sm);
+    line-height: var(--text-display-sm--line-height);
+    letter-spacing: var(--text-display-sm--letter-spacing);
     color: var(--text-primary);
   }
 
