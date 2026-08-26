@@ -198,7 +198,7 @@ export default function TopBar() {
             aria-label="Toggle theme"
             aria-pressed={theme === "dark"}
             onClick={toggleTheme}
-            className="flex items-center p-[4px] text-text-tertiary"
+            className="flex items-center p-[4px] text-text-tertiary cursor-pointer"
           >
             <ThemeToggleIcon />
           </button>
