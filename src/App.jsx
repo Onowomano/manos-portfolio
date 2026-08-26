@@ -66,7 +66,7 @@ function App() {
         <SectionHeading>Say hello</SectionHeading>
         <div className="flex flex-col items-start gap-[6px] text-link-md text-text-primary">
           <a href={sayHello.email} className="underline decoration-[#d4d5d7]">
-            milueziogbaudu@gmail.com
+            {sayHello.email.replace(/^mailto:/, "")}
           </a>
           <a
             href={sayHello.linkedin}

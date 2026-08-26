@@ -2,6 +2,8 @@ import Avatar from "./Avatar";
 import CopyEmailButton from "./CopyEmailButton";
 import { siteLinks } from "../data/links";
 
+const twitterUrl = "https://twitter.com/onowomano";
+
 const linkClass = "link-underline";
 const linkProps = { target: "_blank", rel: "noopener noreferrer" };
 
@@ -78,19 +80,11 @@ export default function Hero() {
           </p>
           <p>
             Say hi on{" "}
-            <a
-              href="https://twitter.com/onowomano"
-              {...linkProps}
-              className={linkClass}
-            >
+            <a href={twitterUrl} {...linkProps} className={linkClass}>
               Twitter
             </a>
             ,{" "}
-            <a
-              href="https://linkedin.com/in/onowomano"
-              {...linkProps}
-              className={linkClass}
-            >
+            <a href={siteLinks.linkedin} {...linkProps} className={linkClass}>
               Linkedin
             </a>{" "}
             or send me an <EmailLink />

@@ -122,10 +122,10 @@ export default function TopBar() {
   }, [menuOpen]);
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-1">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[96px] bg-gradient-to-b from-bg-surface via-bg-surface/80 to-transparent md:hidden"
+        className="absolute inset-x-0 top-0 h-[120px] bg-gradient-to-b from-bg-surface via-bg-surface/80 to-transparent md:hidden"
       />
       <div className="relative flex items-start justify-between px-[16px] pt-[20px] md:px-[56px] md:pt-[30px]">
         <nav className="relative text-link-sm pointer-events-auto">
@@ -165,6 +165,7 @@ export default function TopBar() {
             </button>
 
             <div
+              inert={!menuOpen}
               className={`absolute left-0 top-full mt-[7.5px] flex w-[123px] flex-col items-start rounded-[6px] border border-border-secondary bg-bg-surface p-[3px] transition-all duration-150 ease-out ${
                 menuOpen
                   ? "scale-100 opacity-100"
@@ -180,7 +181,7 @@ export default function TopBar() {
                 <DropdownMenuItem
                   key={link.label}
                   link={link}
-                  active={isLinkActive(link, pathname)}
+                  active={link === activeLink}
                   onNavigate={() => setMenuOpen(false)}
                 />
               ))}
@@ -189,13 +190,7 @@ export default function TopBar() {
         </nav>
 
         <div className="flex items-center text-link-sm text-text-primary pointer-events-auto">
-          <p
-            className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-out md:mr-[4px] md:max-w-[100px] md:opacity-100 ${
-              scrolled
-                ? "mr-0 max-w-0 opacity-0"
-                : "mr-[4px] max-w-[100px] opacity-100"
-            }`}
-          >
+          <p className="mr-[4px] whitespace-nowrap">
             {time} <span className="text-text-tertiary">WAT</span>
           </p>
           <button

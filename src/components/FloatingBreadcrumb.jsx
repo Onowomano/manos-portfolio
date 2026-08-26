@@ -1,18 +1,25 @@
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Home2Fill, SignatureFill, Book6Fill } from "@mingcute/react";
 
-function Crumb({ tertiary, children }) {
-  return (
-    // 14px/18px/-0.28px is a local override in the design, not the link/md
-    // text style (which is 14px/22px/-0.14px) — matched here as-is.
-    <p
-      className={`shrink-0 whitespace-nowrap text-[14px] leading-[18px] tracking-[-0.28px] ${
-        tertiary ? "text-text-tertiary" : "text-text-primary"
-      }`}
-    >
-      {children}
-    </p>
-  );
+function Crumb({ tertiary, to, children }) {
+  // 14px/18px/-0.28px is a local override in the design, not the link/md
+  // text style (which is 14px/22px/-0.14px) — matched here as-is.
+  const className = `shrink-0 whitespace-nowrap text-[14px] leading-[18px] tracking-[-0.28px] ${
+    tertiary ? "text-text-tertiary" : "text-text-primary"
+  }`;
+
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className={`${className} transition-colors duration-150 hover:text-text-primary`}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  return <p className={className}>{children}</p>;
 }
 
 export default function FloatingBreadcrumb() {
@@ -41,7 +48,9 @@ export default function FloatingBreadcrumb() {
       <Crumb tertiary>/</Crumb>
       {isCaseStudyDetail && (
         <>
-          <Crumb tertiary>Case studies</Crumb>
+          <Crumb tertiary to="/case-studies">
+            Case studies
+          </Crumb>
           <Crumb tertiary>/</Crumb>
         </>
       )}

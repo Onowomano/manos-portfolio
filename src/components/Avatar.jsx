@@ -4,9 +4,10 @@ import { avatarStatuses } from "../data/avatarStatuses";
 
 export default function Avatar({ statusOverride }) {
   const liveStatus = useAvatarStatus();
-  const status = statusOverride
-    ? avatarStatuses.find((candidate) => candidate.key === statusOverride)
-    : liveStatus;
+  const status =
+    (statusOverride &&
+      avatarStatuses.find((candidate) => candidate.key === statusOverride)) ||
+    liveStatus;
   const Icon = status.icon;
 
   return (
