@@ -1,8 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { DownLine } from "@mingcute/react";
 import { navLinks } from "../data/home";
 import { useScrolled } from "../hooks/useScrolled";
 import { useWatTime } from "../hooks/useWatTime";
 import { useTheme } from "../hooks/useTheme";
+import { useOnClickOutside } from "../hooks/useOnClickOutside";
+
+function isLinkActive(link, pathname) {
+  if (!link.href.startsWith("/")) return false;
+  if (link.href === "/") return pathname === "/";
+  return pathname === link.href || pathname.startsWith(`${link.href}/`);
+}
 
 function NavItem({ link }) {
   if (link.href.startsWith("/")) {
@@ -25,6 +34,36 @@ function NavItem({ link }) {
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
       className="link-underline whitespace-nowrap text-text-secondary"
+    >
+      {link.label}
+    </a>
+  );
+}
+
+function DropdownMenuItem({ link, active, onNavigate }) {
+  const className = `w-full whitespace-nowrap rounded-[4px] p-[8px] text-link-sm text-text-secondary ${
+    active ? "bg-bg-primary" : ""
+  }`;
+
+  if (link.href.startsWith("/")) {
+    return (
+      <NavLink
+        to={link.href}
+        end={link.href === "/"}
+        onClick={onNavigate}
+        className={className}
+      >
+        {link.label}
+      </NavLink>
+    );
+  }
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onNavigate}
+      className={className}
     >
       {link.label}
     </a>
@@ -56,6 +95,31 @@ export default function TopBar() {
   const scrolled = useScrolled();
   const time = useWatTime();
   const { theme, toggleTheme } = useTheme();
+  const { pathname } = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const activeLink =
+    navLinks.find((link) => isLinkActive(link, pathname)) ?? navLinks[0];
+
+  useOnClickOutside(dropdownRef, () => setMenuOpen(false), menuOpen);
+
+  useEffect(() => {
+    if (!scrolled) setMenuOpen(false);
+  }, [scrolled]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    function handleKeyDown(event) {
+      if (event.key === "Escape") setMenuOpen(false);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-1">
@@ -77,15 +141,50 @@ export default function TopBar() {
             ))}
           </div>
           <div
-            className={`absolute left-0 top-0 flex items-center gap-[12px] transition-all delay-100 duration-300 ease-out md:hidden ${
+            ref={dropdownRef}
+            className={`absolute left-0 top-0 transition-all delay-100 duration-300 ease-out md:hidden ${
               scrolled
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-[6px] opacity-0"
             }`}
           >
-            {navLinks.map((link) => (
-              <NavItem key={link.label} link={link} />
-            ))}
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-haspopup="true"
+              aria-expanded={menuOpen}
+              className="flex items-center rounded-[4px] bg-bg-primary py-[4px] pl-[6px] pr-[2px] text-link-sm text-text-secondary"
+            >
+              <span className="whitespace-nowrap">{activeLink.label}</span>
+              <DownLine
+                aria-hidden="true"
+                className={`size-[14px] shrink-0 transition-transform duration-200 ease-out ${
+                  menuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`absolute left-0 top-full mt-[7.5px] flex w-[123px] flex-col items-start rounded-[6px] border border-border-secondary bg-bg-surface p-[3px] transition-all duration-150 ease-out ${
+                menuOpen
+                  ? "scale-100 opacity-100"
+                  : "pointer-events-none scale-95 opacity-0"
+              }`}
+              style={{
+                transformOrigin: "top left",
+                boxShadow:
+                  "0px 16px 8px rgba(0,0,0,0.06), 0px 2px 4px rgba(0,0,0,0.08)",
+              }}
+            >
+              {navLinks.map((link) => (
+                <DropdownMenuItem
+                  key={link.label}
+                  link={link}
+                  active={isLinkActive(link, pathname)}
+                  onNavigate={() => setMenuOpen(false)}
+                />
+              ))}
+            </div>
           </div>
         </nav>
 
